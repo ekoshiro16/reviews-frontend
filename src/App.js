@@ -1,10 +1,10 @@
 import './App.css';
-import { RecentReviews } from './components';
+import { Reviews } from './components';
 
 function App() {
   return (
     <div className="App">
-      <RecentReviews />
+      <Reviews />
     </div>
   );
 }

@@ -1,0 +1,9 @@
+#mapped-reviews-container {
+    display: flex;
+    flex-flow: row wrap; 
+    justify-content: center;
+}
+
+#mapped-reviews-container div {
+    width: 30%; 
+}

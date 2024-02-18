@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { MappedReviews } from "./";
+import { ManualButton, MappedReviews } from ".";
 
 const RecentReviews = (props) => {
     const [reviews, setReviews] = useState([]);
@@ -8,14 +8,13 @@ const RecentReviews = (props) => {
     useEffect(() => {
         async function fetchReviews() {
             try {
-                const url = `http://localhost:3000/api/reviews`;
+                const url = "http://localhost:3000/api/reviews";
                 const response = await fetch(url); 
                 const data = await response.json();
-
-                if (data && data?.feed.entry) {
-                    setReviews(data.feed.entry)
+                if (data && data.length) {
+                    setReviews(data)
                     const currentTime = new Date();                     
-                    const filteredReviews = data.feed.entry.filter((review) => {
+                    const filteredReviews = data.filter((review) => {
                         const convertedDate = new Date(review.updated.label);
                         const differenceInHours = (currentTime - convertedDate) / (1000 * 60 * 60);
                         return differenceInHours <= 168; 
@@ -27,23 +26,19 @@ const RecentReviews = (props) => {
                         return dateB - dateA; 
                     });
 
-                    console.log(filteredReviews)
-
-                    localStorage.setItem("recentReviews", JSON.stringify(filteredReviews)); 
                     setRecentReviews(filteredReviews);
-                }
+                };
             } catch (e) {
                 console.error(e); 
-            }
+            };
         };
-
         fetchReviews(); 
     }, []);
 
     return (
         <>
-            <h3>Reviews from the past 48 hours:</h3>
-
+            <h3>AllTrails' Reviews from the past 48 hours:</h3>
+            <ManualButton setReviews={setReviews} setRecentReviews={setRecentReviews} />
             {
                 recentReviews.length ? (
                     <>
@@ -53,6 +48,6 @@ const RecentReviews = (props) => {
             }
         </>
     )
-}
+};
 
 export default RecentReviews; 

@@ -1,11 +1,13 @@
+import "../css/mappedReviews.css";
+
 const MappedReviews = (props) => {
     return (
         
-        <>
+        <div id="mapped-reviews-container">
             {
                 props.recentReviews.length ? props.recentReviews.map((review) => {
                     return (
-                        <div style={{"borderBottom": "1px solid black"}}>
+                        <div key={review.id.label} style={{"borderBottom": "1px solid black"}}>
                             <p><strong>{review.author.name.label}</strong> wrote...</p>
                             <p>"{review.content.label}"</p>
                             <p>Posted {new Date(review.updated.label).toString()}</p>
@@ -14,7 +16,7 @@ const MappedReviews = (props) => {
                     )
                 }) : "Loading..."
             }
-        </>
+        </div>
 
     )
 }
