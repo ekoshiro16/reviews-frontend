@@ -1,3 +1,10 @@
+// This component maps through available reviews data stored in our state (which itself is in our Reviews component) and renders each review with the following data:
+    // *  Author of post
+    // * content
+    // * Date (which is converted to a more readable string)
+    // * User rating out of 5 stars
+// Notes:
+        // There is some minor CSS styling for the UI display of the reviews
 import "../css/mappedReviews.css";
 
 const MappedReviews = (props) => {
@@ -17,8 +24,7 @@ const MappedReviews = (props) => {
                 }) : "Loading..."
             }
         </div>
-
-    )
-}
+    );
+};
 
 export default MappedReviews; 

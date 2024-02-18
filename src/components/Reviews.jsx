@@ -1,3 +1,14 @@
+// This component displays all reviews made within the past week in order from newest to oldest. 
+    // Functionality:
+        // * Upon loading, the client will fetch the reviews data from the backend server. 
+        // * A button is included which, when clicked, manually refreshes the reviews data available from the Apple Store RSS feed. 
+    // Notes: 
+        // There are two states being managed - reviews and recentReviews. 
+            // recentReviews stores all reviews made within the past week. 
+            // reviews stores all reviews. 
+                // If desired, further extensions of functionality could include a toggle option to show different categories of reviews, including all reviews. 
+    
+
 import { useEffect, useState } from "react";
 import { ManualButton, MappedReviews } from ".";
 
@@ -37,14 +48,14 @@ const RecentReviews = (props) => {
 
     return (
         <>
-            <h3>AllTrails' Reviews from the past 48 hours:</h3>
+            <h3>AllTrails' Reviews from the past week:</h3>
             <ManualButton setReviews={setReviews} setRecentReviews={setRecentReviews} />
             {
                 recentReviews.length ? (
                     <>
                         <MappedReviews recentReviews={recentReviews}/>
                     </>
-                ) : "Ain't got nothin boss"
+                ) : "No reviews available at the moment."
             }
         </>
     )

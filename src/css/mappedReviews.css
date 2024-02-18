@@ -1,3 +1,5 @@
+/* Some minor CSS styling for the MappedReviews component to make reading the reviews rendered a little easier. */
+
 #mapped-reviews-container {
     display: flex;
     flex-flow: row wrap; 

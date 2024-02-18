@@ -1,3 +1,7 @@
+// This component is designed to allow users of the frontend client to manually refresh the reviews data available from the Apple Store RSS feed. 
+    // It is a button that, when clicked, invokes a helper function which retrieves the reviews data from the backend, filters the dataset for reviews made within the last week, and then sorts it from newest to oldest. 
+        // The appropriate states are updated as well. 
+
 const ManualButton = (props) => {
     const { setRecentReviews, setReviews } = props; 
 
