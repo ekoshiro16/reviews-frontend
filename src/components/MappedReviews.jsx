@@ -1,10 +1,10 @@
 // This component maps through available reviews data stored in our state (which itself is in our Reviews component) and renders each review with the following data:
-    // *  Author of post
-    // * content
+    // * Author of post
+    // * Content
     // * Date (which is converted to a more readable string)
     // * User rating out of 5 stars
 // Notes:
-        // There is some minor CSS styling for the UI display of the reviews
+        // There is some minor CSS styling for the UI display of the reviews ("../css/mappedReviews.css")
 import "../css/mappedReviews.css";
 
 const MappedReviews = (props) => {
@@ -14,7 +14,7 @@ const MappedReviews = (props) => {
             {
                 props.recentReviews.length ? props.recentReviews.map((review) => {
                     return (
-                        <div key={review.id.label} style={{"borderBottom": "1px solid black"}}>
+                        <div key={review.id.label} className="indiv-review-container">
                             <p><strong>{review.author.name.label}</strong> wrote...</p>
                             <p>"{review.content.label}"</p>
                             <p>Posted {new Date(review.updated.label).toString()}</p>

@@ -12,9 +12,10 @@
 import { useEffect, useState } from "react";
 import { ManualButton, MappedReviews } from ".";
 
-const RecentReviews = (props) => {
+const RecentReviews = () => {
     const [reviews, setReviews] = useState([]);
     const [recentReviews, setRecentReviews] = useState([]); 
+    const [updateTime, setUpdateTime] = useState(undefined);
 
     useEffect(() => {
         async function fetchReviews() {
@@ -44,21 +45,30 @@ const RecentReviews = (props) => {
             };
         };
         fetchReviews(); 
+        let currentTime = new Date(); 
+        setUpdateTime(currentTime);
     }, []);
 
     return (
         <>
             <h3>AllTrails' Reviews from the past week:</h3>
-            <ManualButton setReviews={setReviews} setRecentReviews={setRecentReviews} />
+            <div>
+                <ManualButton 
+                    setReviews={setReviews}
+                    setRecentReviews={setRecentReviews} 
+                    setUpdateTime={setUpdateTime}
+                />
+                {
+                    updateTime ? <h5>Last updated: {updateTime.toString()}</h5> : ""
+                }
+            </div>
             {
                 recentReviews.length ? (
-                    <>
-                        <MappedReviews recentReviews={recentReviews}/>
-                    </>
+                    <MappedReviews recentReviews={recentReviews}/>
                 ) : "No reviews available at the moment."
             }
         </>
-    )
+    );
 };
 
 export default RecentReviews; 

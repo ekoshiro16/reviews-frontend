@@ -1,4 +1,4 @@
-/* Some minor CSS styling for the MappedReviews component to make reading the reviews rendered a little easier. */
+/* CSS styling for the MappedReviews component. */
 
 #mapped-reviews-container {
     display: flex;
@@ -8,4 +8,8 @@
 
 #mapped-reviews-container div {
     width: 30%; 
+}
+
+.indiv-review-container {
+    border-bottom: 1px solid black; 
 }
